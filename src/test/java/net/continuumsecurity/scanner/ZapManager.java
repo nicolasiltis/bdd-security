@@ -46,8 +46,9 @@ public class ZapManager {
             params.add("-dir"); params.add("tmp");
             params.add("-config"); params.add("scanner.threadPerHost=20");
             params.add("-config"); params.add("spider.thread=10");
-            params.add("-config"); params.add("api.key="+API_KEY);
-            Config.getInstance().setProxyApi(API_KEY);
+            params.add("-config"); params.add("api.disablekey=true");
+            //params.add("-config"); params.add("api.key="+API_KEY);
+            //Config.getInstance().setProxyApi(API_KEY);
             String upstreamProxyHost = Config.getInstance().getUpstreamProxyHost();
             if (upstreamProxyHost != null) {
                 int upstreamProxyPort = Config.getInstance().getUpstreamProxyPort();
@@ -73,7 +74,7 @@ public class ZapManager {
         log.info("Start script 2 *********");
         pb2.directory(myScriptFile.getParentFile());
         log.info("Start script 3 *********");
-        process = pb2.command(myScriptFile.getAbsolutePath(),String.valueOf(port),API_KEY).start();
+        process = pb2.command(myScriptFile.getAbsolutePath(),String.valueOf(port)).start();
         log.info("OUTPUSTREAM *******" + process.getOutputStream().toString());
         Thread.sleep(10000);
         log.info("Stop script ********");
