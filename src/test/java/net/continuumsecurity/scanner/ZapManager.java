@@ -1,6 +1,8 @@
 package net.continuumsecurity.scanner;
 
 import net.continuumsecurity.Config;
+import net.continuumsecurity.sslCertificate.SSLCertificateEnabled;
+
 import org.zaproxy.clientapi.core.ClientApi;
 
 import java.io.File;
@@ -63,6 +65,8 @@ public class ZapManager {
         } else {
             log.info("ZAP already started.");
         }
+        SSLCertificateEnabled sslCert = new SSLCertificateEnabled(""+ port);
+        sslCert.getCertFromZap();
         return port;
     }
 
