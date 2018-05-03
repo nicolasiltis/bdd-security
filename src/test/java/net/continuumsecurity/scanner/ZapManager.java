@@ -65,8 +65,18 @@ public class ZapManager {
         } else {
             log.info("ZAP already started.");
         }
-        SSLCertificateEnabled sslCert = new SSLCertificateEnabled(""+ port);
-        sslCert.getCertFromZap();
+        
+        
+        log.info("Start script");
+        File myScriptFile = new File("my_script.sh");
+        ProcessBuilder pb2 = new ProcessBuilder().inheritIO();
+        pb2.directory(myScriptFile.getParentFile());
+        process = pb2.command(String.valueOf(port)).start();
+        log.info(process.getOutputStream().toString());
+        Thread.sleep(10000);
+        log.info("Stop script");
+        
+        
         return port;
     }
 
