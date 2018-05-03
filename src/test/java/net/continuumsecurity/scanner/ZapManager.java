@@ -1,7 +1,6 @@
 package net.continuumsecurity.scanner;
 
 import net.continuumsecurity.Config;
-import net.continuumsecurity.sslCertificate.SSLCertificateEnabled;
 
 import org.zaproxy.clientapi.core.ClientApi;
 
