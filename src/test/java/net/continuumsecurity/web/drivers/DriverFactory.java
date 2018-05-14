@@ -145,6 +145,10 @@ public class DriverFactory {
 		myProfile.setAcceptUntrustedCertificates(true);
 		myProfile.setAssumeUntrustedCertificateIssuer(true);
 		myProfile.setPreference("webdriver.load.strategy", "unstable");
+		String noProxyHosts = Config.getInstance().getNoProxyHosts();
+		if (! noProxyHosts.isEmpty()) {
+			myProfile.setPreference("network.proxy.no_proxies_on", noProxyHosts);
+		}
 		if (capabilities == null) {
 			capabilities = new DesiredCapabilities();
 		}
@@ -170,7 +174,6 @@ public class DriverFactory {
 		Proxy proxy = new Proxy();
 		proxy.setHttpProxy(Config.getInstance().getProxyHost() + ":" + Config.getInstance().getProxyPort());
 		proxy.setSslProxy(Config.getInstance().getProxyHost() + ":" + Config.getInstance().getProxyPort());
-		proxy.setNoProxy("localhost,127.0.0.1,192.168.0.10");
 		capabilities.setCapability("proxy", proxy);
 		return capabilities;
 	}

@@ -36,6 +36,7 @@ public class Config {
     protected XMLConfiguration xml;
     private String proxyHost;
     private int proxyPort = 0;
+    private String noProxyHosts;
     private String proxyApi;
     private static Config config;
 
@@ -193,6 +194,8 @@ public class Config {
     public String getNessusUsername() { return validateAndGetString("nessus.username");}
 
     public String getNessusPassword() { return validateAndGetString("nessus.password");}
+    
+    public String getNoProxyHosts() { return validateAndGetString("upstreamProxy.noProxyHosts");}
 
     public String getUpstreamProxyHost() { return validateAndGetString("upstreamProxy.host"); }
 

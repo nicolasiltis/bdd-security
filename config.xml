@@ -38,9 +38,9 @@
     application under test.  The framework will configure both the WebDriver instance and ZAP to use this proxy.  Note that non-HTTP traffic will not use this proxy.    -->
 
     <upstreamProxy>
-        <host></host>
-        <port></port>
-    </upstreamProxy>
+        <host>10.1.2.251</host>
+        <port>3128</port>
+        <noProxyHosts>localhost,127.0.0.1,192.168.10.2</noProxyHosts></upstreamProxy>
 
     <incorrectPassword>SDFsdfwjx1</incorrectPassword>
     <incorrectUsername>bobbles</incorrectUsername>
