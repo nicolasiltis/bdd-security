@@ -131,6 +131,12 @@ public class Config {
         if (ret == null) throw new RuntimeException(value+" not defined in config.xml");
         return ret;
     }
+    
+    private String[] validateAndGetStringArray(String value) {
+        String[] ret = getXml().getStringArray(value);
+        if (ret == null) throw new RuntimeException(value+" not defined in config.xml");
+        return ret;
+    }
 
     public String getSSLyzePath() { return validateAndGetString("sslyze.path"); }
     public String getSSLyzeOption() { return validateAndGetString("sslyze.option"); }
@@ -195,7 +201,7 @@ public class Config {
 
     public String getNessusPassword() { return validateAndGetString("nessus.password");}
     
-    public String getNoProxyHosts() { return validateAndGetString("upstreamProxy.noProxyHosts");}
+    public String getNoProxyHosts() { return String.join(",", validateAndGetStringArray("upstreamProxy.noProxyHosts"));}
 
     public String getUpstreamProxyHost() { return validateAndGetString("upstreamProxy.host"); }
 
