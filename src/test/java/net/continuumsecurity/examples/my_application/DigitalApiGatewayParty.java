@@ -60,7 +60,7 @@ public class DigitalApiGatewayParty extends WebApplication implements ILogin,
 	
 	public void bookingExternal(){
 	    log.info("Beginning of external booking");
-		driver.get(Config.getInstance().getBaseUrl() + "booking?date=2018-05-11T10:00:00.000Z&storeId=780073");
+		driver.get(Config.getInstance().getBaseUrl() + "booking?date=2018-07-13T10:00:00.000Z&storeId=780073");
 		log.info(driver.getPageSource());
 		findAndWaitForElement(By.id("mat-input-10"));
 		log.info(" mat-input-10 found");
