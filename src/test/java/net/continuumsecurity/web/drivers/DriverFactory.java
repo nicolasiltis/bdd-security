@@ -147,6 +147,7 @@ public class DriverFactory {
 		myProfile.setPreference("webdriver.load.strategy", "unstable");
 		String noProxyHosts = Config.getInstance().getNoProxyHosts();
 		if (! noProxyHosts.isEmpty()) {
+			log.info("GGGGGGGGGGGGGGGGGGGGGGGGGGGGG " + noProxyHosts);
 			myProfile.setPreference("network.proxy.no_proxies_on", noProxyHosts);
 		}
 		if (capabilities == null) {
