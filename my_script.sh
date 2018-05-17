@@ -1,12 +1,13 @@
 #!/bin/bash
 
-sudo rm /usr/local/share/ca-certificates/OWASP_ZAP.crt
-sudo rm /etc/ssl/certs/OWASP_ZAP.pem
-sudo curl http://localhost:$1/OTHER/core/other/rootcert/ > /usr/local/share/ca-certificates/OWASP_ZAP.crt
-sudo update-ca-certificates
+rm /usr/local/share/ca-certificates/OWASP_ZAP.crt
+rm /etc/ssl/certs/OWASP_ZAP.pem
+curl http://localhost:$1/OTHER/core/other/rootcert/
+curl http://localhost:$1/OTHER/core/other/rootcert/ > /usr/local/share/ca-certificates/OWASP_ZAP.crt
+update-ca-certificates
 
 #Initialisation of OWASP CA
-certname="OWASP CA"
+certname="OWASP Zed Attack Proxy Root CA - OWASP Root CA"
 certfile="/etc/ssl/certs/OWASP_ZAP.pem"
 
 #Creation of webdriver profile
@@ -22,5 +23,9 @@ done
 for certDB in $(find ~/.mozilla/firefox -name "cert*.db")
 do
     certdir=$(dirname ${certDB});
+    echo "Delete of the certificate"
+    certutil -D -n "${certname}" -d sql:${certdir}
+    echo "add the certificate"
     certutil -A -n "${certname}" -t "TCu,Cu,Tu" -i ${certfile} -d sql:${certdir}
 done
+
