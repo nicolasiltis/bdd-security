@@ -74,7 +74,7 @@ public class ZapManager {
         log.info("Start script 2 *********");
         pb2.directory(myScriptFile.getParentFile());
         log.info("Start script 3 *********");
-        process = pb2.command(myScriptFile.getAbsolutePath(),String.valueOf(port)).start();
+        process = pb2.command("sudo",myScriptFile.getAbsolutePath(),String.valueOf(port)).start();
         log.info("OUTPUSTREAM *******" + process.getOutputStream().toString());
         Thread.sleep(10000);
         log.info("Stop script ********");
