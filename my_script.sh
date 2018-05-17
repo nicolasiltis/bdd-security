@@ -28,4 +28,4 @@ do
     echo "add the certificate"
     certutil -A -n "${certname}" -t "TCu,Cu,Tu" -i ${certfile} -d sql:${certdir}
 done
-
+chown -R jenkins:jenkins /home/jenkins/.mozilla/firefox
