@@ -5,15 +5,15 @@
             which is included in the bdd-security framework for demo purposes. -->
 
     <!-- The web driver to use, can be either Firefox, Chrome or HtmlUnit.  Optionally specify path to the driver (required for linux)
-         Some drivers require a path to the platform specific driver binary, for example chrome needs chromedriver.  If these values are not specified, we'll use HtmlUnit -->
-    <defaultDriver>firefox</defaultDriver><!--
+         Some drivers require a path to the platform specific driver binary, for example chrome needs chromedriver.  If these values are not specified, we'll use HtmlUnit
+    <defaultDriver>firefox</defaultDriver>
     <defaultDriver path="src/test/resources/drivers/chromedriver-mac">Chrome</defaultDriver> -->
 
     <!-- Base URL of the application to test -->
-    <baseUrl>http://192.168.10.2:8090/#/</baseUrl>
+    <baseUrl>http://localhost:8080/</baseUrl>
 
     <!-- A Java class to hold the Selenium steps to test the application in depth. Optionally required for in-depth authn/z and session management testing. -->
-    <class>net.continuumsecurity.examples.my_application.DigitalApiGatewayParty</class>
+    <class>net.continuumsecurity.examples.ropeytasks.RopeyTasksApplication</class>
 
     <sslyze>
         <path>/opt/sslyze/sslyze_cli.py</path>
@@ -26,21 +26,21 @@
     </sessionIds>
 
     <!-- the default user to use when logging in to the app -->
-    <defaultUsername>admin</defaultUsername>
-    <defaultPassword>admin</defaultPassword>
+    <defaultUsername>bob</defaultUsername>
+    <defaultPassword>password</defaultPassword>
 
     <scanner>
-        <ignoreUrl>.*github.*</ignoreUrl>
+        <ignoreUrl>.*logout.*</ignoreUrl>
         <spiderUrl>baseUrl</spiderUrl>
     </scanner>
 
     <!-- An upstream proxy through which all HTTP traffic must pass before hitting the target
-    application under test.  The framework will configure both the WebDriver instance and ZAP to use this proxy.  Note that non-HTTP traffic will not use this proxy.    -->
-
+    application under test.  The framework will configure both the WebDriver instance and ZAP to use this proxy.  Note that non-HTTP traffic will not use this proxy. -->
     <upstreamProxy>
-        <host>10.1.2.251</host>
-        <port>3128</port>
-        <noProxyHosts>localhost,127.0.0.1,192.168.10.2</noProxyHosts></upstreamProxy>
+        <host></host>
+        <port></port>
+        <noProxyHosts></noProxyHosts> <!-- ie : localhost,127.0.0.1,192.168.2.2 -->
+    </upstreamProxy>
 
     <incorrectPassword>SDFsdfwjx1</incorrectPassword>
     <incorrectUsername>bobbles</incorrectUsername>
@@ -52,10 +52,10 @@
     </nessus>
 
     <!-- Optional location of a running OWASP ZAP instance.  Either an external- already running ZAP instance must be specified here, or the zapPath must be specified to launch ZAP
-    <proxy> 
+    <proxy>
         <host>127.0.0.1</host>
-        <port>8090</port>
-        <api>http://localhost:8081/?anonym=true&app=ZAP</api>
+        <port>8888</port>
+        <api></api>
     </proxy>-->
 
     <zapPath>zap/zap.sh</zapPath>
