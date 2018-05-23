@@ -65,21 +65,6 @@ public class ZapManager {
         } else {
             log.info("ZAP already started.");
         }
-        
-        
-        log.info("Start script ********");
-        File myScriptFile = new File("my_script.sh");
-        log.info("Start script 1 *********");
-        ProcessBuilder pb2 = new ProcessBuilder().inheritIO();
-        log.info("Start script 2 *********");
-        pb2.directory(myScriptFile.getParentFile());
-        log.info("Start script 3 *********");
-        process = pb2.command("sudo",myScriptFile.getAbsolutePath(),String.valueOf(port)).start();
-        log.info("OUTPUSTREAM *******" + process.getOutputStream().toString());
-        Thread.sleep(10000);
-        log.info("Stop script ********");
-        
-        
         return port;
     }
 
