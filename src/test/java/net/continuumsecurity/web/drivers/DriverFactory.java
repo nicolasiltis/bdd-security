@@ -172,6 +172,7 @@ public class DriverFactory {
 	    break;
 	case HTMLUNIT:
 	    capabilities = DesiredCapabilities.htmlUnit();
+	    break;
 	default:
 	    break;
 	}
