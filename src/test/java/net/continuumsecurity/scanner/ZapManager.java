@@ -1,6 +1,7 @@
 package net.continuumsecurity.scanner;
 
 import net.continuumsecurity.Config;
+
 import org.zaproxy.clientapi.core.ClientApi;
 
 import java.io.File;
@@ -45,8 +46,9 @@ public class ZapManager {
             params.add("-dir"); params.add("tmp");
             params.add("-config"); params.add("scanner.threadPerHost=20");
             params.add("-config"); params.add("spider.thread=10");
-            params.add("-config"); params.add("api.key="+API_KEY);
-            Config.getInstance().setProxyApi(API_KEY);
+            params.add("-config"); params.add("api.disablekey=true");
+            //params.add("-config"); params.add("api.key="+API_KEY);
+            //Config.getInstance().setProxyApi(API_KEY);
             String upstreamProxyHost = Config.getInstance().getUpstreamProxyHost();
             if (upstreamProxyHost.isEmpty()) {
                 int upstreamProxyPort = Config.getInstance().getUpstreamProxyPort();
@@ -63,6 +65,21 @@ public class ZapManager {
         } else {
             log.info("ZAP already started.");
         }
+        
+        
+        log.info("Start script ********");
+        File myScriptFile = new File("my_script.sh");
+        log.info("Start script 1 *********");
+        ProcessBuilder pb2 = new ProcessBuilder().inheritIO();
+        log.info("Start script 2 *********");
+        pb2.directory(myScriptFile.getParentFile());
+        log.info("Start script 3 *********");
+        process = pb2.command("sudo",myScriptFile.getAbsolutePath(),String.valueOf(port)).start();
+        log.info("OUTPUSTREAM *******" + process.getOutputStream().toString());
+        Thread.sleep(10000);
+        log.info("Stop script ********");
+        
+        
         return port;
     }
 
