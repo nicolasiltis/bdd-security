@@ -211,6 +211,16 @@ public class Config {
         return 80;
     }
 
+    public String getSslHost(){
+        return validateAndGetString("sslyze.targetHost");
+    }
+
+    public int getSslPort(){
+        String portAsString =  validateAndGetString("sslyze.targetPort");
+        if (portAsString != null && portAsString.length() > 0) return Integer.parseInt(portAsString);
+        return 443;
+    }
+
     public List<String> getSessionIDs() {
         List<String> ids = new ArrayList<String>();
         for (Object o : getXml().getList("sessionIds.name")) {
