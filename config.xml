@@ -41,7 +41,8 @@
 
     <scanner>
         <ignoreUrl>.*logout.*</ignoreUrl>
-        <spiderUrl>baseUrl</spiderUrl>
+	<spiderUrl>baseUrl</spiderUrl>
+	<maxDepth>5</maxDepth>
     </scanner>
 
     <!-- An upstream proxy through which all HTTP traffic must pass before hitting the target
