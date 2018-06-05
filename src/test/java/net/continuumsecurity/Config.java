@@ -101,7 +101,7 @@ public class Config {
     public String getClassName() {
         return validateAndGetString("class");
     }
-
+    
     public String getBaseUrl() {
         return validateAndGetString("baseUrl");
     }
