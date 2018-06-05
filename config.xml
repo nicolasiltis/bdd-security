@@ -18,10 +18,7 @@
     <!-- In order to install sslyze on a Linux system, these steps must be followed
 	apt-get update
 	apt-get install python-pip
-	pip install libssl-dev
 	pip install sslyze
-	pip install ipaddress
-	pip install cffis>=1.7
     -->
     <sslyze>
         <path>sslyze</path>
