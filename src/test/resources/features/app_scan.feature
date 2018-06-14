@@ -184,3 +184,28 @@ Feature: Automated Application Security Scanning
       |url                    |parameter          |cweId      |wascId   |
     And the XML report is written to the file build/zap/insecure_methods.xml
     Then no Medium or higher risk vulnerabilities should be present
+
+  @sonar-report
+  Scenario: The sonar report is writting
+    And the SQL-Injection policy is enabled
+    And the Cross-Site-Scripting policy is enabled
+    And the Path-traversal policy is enabled
+    And the Remote-file-inclusion policy is enabled
+    And the Server-side-include policy is enabled
+    And the Server-side-code-injection policy is enabled
+    And the Remote-os-command-injection policy is enabled
+    And the crlf-injection policy is enabled
+    And the External-redirect policy is enabled
+    And the source-code-disclosure policy is enabled
+    And the shell-shock policy is enabled
+    And the ldap-injection policy is enabled
+    And the xpath-injection policy is enabled
+    And the xml-external-entity policy is enabled
+    And the padding-oracle policy is enabled
+    And the insecure-http-methods policy is enabled
+    And the attack strength is set to High
+    And the alert threshold is set to Low
+    When the scanner is run
+    And the following false positives are removed
+      |url                    |parameter          |cweId      |wascId   |
+    Then the HTML report is written to the file build/zap/all_reports.html
